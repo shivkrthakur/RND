@@ -1,0 +1,12 @@
+REMOVE DIRECTORY FROM GIT AND LOCAL:
+You could checkout 'master' with both directories;
+git rm -r one-of-the-directories
+git commit -m "Remove duplicated directory"
+git push origin <your-git-branch> (typically 'master', but not always)
+
+REMOVE DIRECTORY FROM GIT AND NOT LOCAL:
+Remove the directory from git but not delete it entirely from the filesystem (local): git rm -r --cached myFolder
+
+REMOVE A FILE FROM GIT:
+git rm file1.txt
+git commit -m "remove file1.txt"
