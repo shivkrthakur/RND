@@ -51,7 +51,19 @@ void SumVsXOROptimizedFS()
     int count = (n == 0) ? 0 : Convert.ToString(n,2).Count(x => x == '0');
     Console.WriteLine(Math.Pow(2,count));
 }
-/* EXPLANATION */
+/* EDITORIAL */
+/*
+XOR operation is equivalent to adding two bits igoring the carry. Let's see the truth table for XOR:
+0 ^ 0 = 0
+0 ^ 1 = 1
+1 ^ 0 = 1
+1 ^ 1 = 0
+You can see that XOR behaves exactly like add operation except in one case when A = 1 AND B = 1.
+From this observation, you can find out when x + n  = x ^ n  will be true. If for any i, the ith bit of x and n are both 1,
+we have to take care of carry bit during adding the number and the equation won't be true.
+Take the binary representation of x and count the number of zeros(ignoring leading zeros). If the ith bit of x is 1, 
+you must place a 1 in the ith bit of n. Otherwise, you can put either 0 or 1. So if the number of zero in binary is b, the answer is 2Eb.
+*/
 /*
 http://www.geeksforgeeks.org/add-two-numbers-without-using-arithmetic-operators/
 http://www.geeksforgeeks.org/equal-sum-xor/
@@ -73,5 +85,5 @@ So given the operand A, all the bits in A which are 1 must be 0 in B.
 They are fixed bits and you have no choice for them. But all other bits in B are free and you can set them to 1 or 0 
 and the equation will keep being true. To count all possible values of B, you must then count the 0's in A 
 (i.e. the number of free bits in B) and calculate 2 to the power of the free bits.
-
 */
+
