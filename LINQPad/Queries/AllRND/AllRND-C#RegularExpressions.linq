@@ -16,6 +16,12 @@ void RegularExpressions()
 }
 
 /*
+https://www.mikesdotnetting.com/article/46/c-regular-expressions-cheat-sheet
+https://www.codeproject.com/Articles/9099/The-Minute-Regex-Tutorial
+https://regexone.com/references/csharp
+https://www.tutorialspoint.com/csharp/csharp_regular_expressions.htm
+http://www.regular-expressions.info
+
 	abc…		Letters
 	123…		Digits
 	\d			Any Digit
