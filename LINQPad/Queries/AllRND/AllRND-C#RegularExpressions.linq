@@ -8,6 +8,14 @@ void Main()
 // Define other methods and classes here
 void RegularExpressions()
 {
+	string t = "<li style=\"-moz-float-edge: content-box\">... that <a href=\"/wiki/Orval_Overall\" title=\"Orval Overall\">Orval Overall</a> <i>(pictured)</i> is the only <b><a href=\"/wiki/List_of_Major_League_Baseball_pitchers_who_have_struck_out_four_batters_in_one_inning\" title=\"List of Major League Baseball pitchers who have struck out four batters in one inning\">Major League Baseball player to strike out four batters in one inning</a></b> in the <a href=\"/wiki/World_Series\" title=\"World Series\">World Series</a>?</li>";
+	Console.WriteLine(Regex.Matches(t, @"href=([""'])(.*?)(<\s*/\s*a\s*>)"));
+	Console.WriteLine(Regex.Matches(t, @"href=([""'])(.*?)\1"));
+
+	//Console.WriteLine(Regex.Match(t, @"href=([""'])(.*?)(<\s*/\s*a\s*>)").Groups);
+	//Console.WriteLine(Regex.Match(t, @"href=([""'])(.*?)\1").Groups);
+	//Console.WriteLine(Regex.Match(t, @"href=([""'])(.*?)(<\s*/\s*a\s*>)").Groups);
+	return;
 	string text = "This is a test text string to run regular expression matches. This will help you familiarize yourself with how regular expressions work. It will also familiarise you with various regex criteria.";
 	Console.WriteLine(Regex.Matches(text, "familiari[sz]e").Count); // Matches both familiarize and familiarise. Output: 2
 	Console.WriteLine(Regex.Matches(text, @"\sThis").Count); //Matches the This which has a space before it. Output: 1
@@ -16,12 +24,16 @@ void RegularExpressions()
 }
 
 /*
+http://eloquentjavascript.net/1st_edition/chapter10.html
+https://gist.github.com/gruber/8891611
+https://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
 https://www.mikesdotnetting.com/article/46/c-regular-expressions-cheat-sheet
 https://www.codeproject.com/Articles/9099/The-Minute-Regex-Tutorial
 https://regexone.com/references/csharp
 https://www.tutorialspoint.com/csharp/csharp_regular_expressions.htm
 http://www.regular-expressions.info
 
+http://www.regextester.com/20
 	abc…		Letters
 	123…		Digits
 	\d			Any Digit
