@@ -2,12 +2,18 @@
 
 void Main()
 {
-	Console.WriteLine(RemoveACharFromStringAtSpecificIndex("This is crazy", 9, 4));
+	Misc();
+	//GenerateAllSubstring("abba");
+	//Console.WriteLine(RemoveACharFromStringAtSpecificIndex("This is crazy", 9, 4));
 	//Console.WriteLine(CountStringOccurrences("0101000101010100","101"));
 }
 
 static void Misc()
 {
+	var sub2 = "cdab".OrderBy(x => x);
+	Console.WriteLine(string.Join("", "asfaishfia".OrderBy(x => x)));
+	Console.WriteLine(sub2);
+	return;
 	int index = "isThis is a test".IndexOf("is",1);
 	Console.WriteLine(index);
 	return;
@@ -31,6 +37,29 @@ static void Misc()
 	Console.WriteLine(b);
 
 */
+}
+
+void GenerateAllSubstring(string inputString)
+{
+	int len = inputString.Length;
+	int count = 0;
+	for(int k = 1; k < len; k++)
+	{
+		for(int i = 0; i <= len - k; i++)
+		{
+			var sub1 = inputString.Substring(i, k).ToCharArray();
+			for(int j = i + 1; j <= len - k; j++)
+			{
+				var sub2 = inputString.Substring(j, k).ToCharArray();
+				Array.Sort(sub1);
+				Array.Sort(sub2);
+				if(string.Equals(new string(sub1), new string(sub2))) count++;
+				//Console.WriteLine($"i:{i+1} j:{j+1} {inputString[i]},{inputString[j]} sub1:{sub1} sub2:{sub2}");
+				//Console.WriteLine($"{sub1},{sub2}");
+			}
+		}
+	}
+	Console.WriteLine(count);
 }
 
 void StringLiterals()
@@ -85,4 +114,64 @@ bool IsPalindrome(string s1)
 	//Console.WriteLine($"s1:{s1} s1R:{s1R}");
 	if(s1 == s1R) return true;
 	return false;
+}
+
+/*
+http://stackoverflow.com/questions/12261344/fastest-search-method-in-stringbuilder
+*/
+public static class StringBuilderSearching
+{
+  public static bool Contains(this StringBuilder haystack, string needle)
+  {
+    return haystack.IndexOf(needle) != -1;
+  }
+  public static int IndexOf(this StringBuilder haystack, string needle)
+  {
+    if(haystack == null || needle == null)
+      throw new ArgumentNullException();
+    if(needle.Length == 0)
+      return 0;//empty strings are everywhere!
+    if(needle.Length == 1)//can't beat just spinning through for it
+    {
+      char c = needle[0];
+      for(int idx = 0; idx != haystack.Length; ++idx)
+        if(haystack[idx] == c)
+          return idx;
+      return -1;
+    }
+    int m = 0;
+    int i = 0;
+    int[] T = KMPTable(needle);
+    while(m + i < haystack.Length)
+    {
+      if(needle[i] == haystack[m + i])
+      {
+        if(i == needle.Length - 1)
+          return m == needle.Length ? -1 : m;//match -1 = failure to find conventional in .NET
+        ++i;
+      }
+      else
+      {
+        m = m + i - T[i];
+        i = T[i] > -1 ? T[i] : 0;
+      }
+    }
+    return -1;
+  }      
+  private static int[] KMPTable(string sought)
+  {
+    int[] table = new int[sought.Length];
+    int pos = 2;
+    int cnd = 0;
+    table[0] = -1;
+    table[1] = 0;
+    while(pos < table.Length)
+      if(sought[pos - 1] == sought[cnd])
+        table[pos++] = ++cnd;
+      else if(cnd > 0)
+        cnd = table[cnd];
+      else
+        table[pos++] = 0;
+    return table;
+  }
 }
