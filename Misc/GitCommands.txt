@@ -10,3 +10,21 @@ Remove the directory from git but not delete it entirely from the filesystem (lo
 REMOVE A FILE FROM GIT:
 git rm file1.txt
 git commit -m "remove file1.txt"
+
+If you want to overwrite only one file:
+git fetch
+git checkout origin/master <filepath>
+If you want to overwrite all changed files:
+
+git fetch
+git reset --hard origin/master
+(This assumes that you're working on master locally and you want the changes on the origin's master - if you're on a branch, substitute that in instead.)
+
+
+From the git-diff manpage:
+git diff [--options] <commit> <commit> [--] [<path>...]
+For instance, to see the difference for a file "main.c" between now and two commits back, here are three equivalent commands:
+
+$ git diff HEAD^^ HEAD main.c
+$ git diff HEAD^^..HEAD -- main.c
+$ git diff HEAD~2 HEAD -- main.c
