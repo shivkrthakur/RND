@@ -9,9 +9,9 @@ void Main()
 // Define other methods and classes here
 static void BeautifulQuadruples() {
     //int[] tokens_A = Array.ConvertAll("50 35 34 1".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 16965
-    //int[] tokens_A = Array.ConvertAll("10 3 4 5".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 185
+    int[] tokens_A = Array.ConvertAll("10 3 4 5".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 185
     //int[] tokens_A = Array.ConvertAll("2 3 4 5".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 34
-	int[] tokens_A = Array.ConvertAll("1 2 3 4".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 11
+	//int[] tokens_A = Array.ConvertAll("1 2 3 4".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 11
 	
     int A = tokens_A[0];
     int B = tokens_A[1];
@@ -43,9 +43,9 @@ static void BeautifulQuadruples() {
 void BeautifulQuadruplesOP1()
 {
     //int[] tokens_A = Array.ConvertAll("50 35 34 1".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 16965
-    //int[] tokens_A = Array.ConvertAll("10 3 4 5".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 185
+    int[] tokens_A = Array.ConvertAll("10 3 4 5".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 185
     //int[] tokens_A = Array.ConvertAll("2 3 4 5".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 34
-	int[] tokens_A = Array.ConvertAll("1 2 3 4".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 11
+	//int[] tokens_A = Array.ConvertAll("1 2 3 4".Split(),Int32.Parse).OrderBy(x => x).ToArray(); //OUTPUT: 11
 	long A = tokens_A[0], B = tokens_A[1], C = tokens_A[2], D = tokens_A[3];
 
 	int [] cnt = new int[C * D];
